@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "e8d894e7-22ea-4f59-8a3e-3325a306085a",
+		"name": "DGPTestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/cards",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "userId",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \t\"number\": \"6037-1111-2222-3333\",\n\t\"cvv2\":\"123\",\n\t\"expireDate\":\"0808\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/cards",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cards/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "userId",
+						"value": "1"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:8080/api/cards/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cards",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cards",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "userId",
+						"value": "1"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/cards",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/transactions/transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "userId",
+						"value": "1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"source\" : \"6037-1111-2222-3333\", \n\t\"dest\" : \"6037-1111-2222-2222\",\n\t\"cvv2\"  : \"123\",\n\t\"expDate\" : \"0808\",\n\t\"pin\" : \"123\",\n\t\"amount\" : 500\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/transactions/transfer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transactions",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/transactions/report",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/transactions/report/1?endDate=2022-01-19%2007%3A30%3A00&startDate=1984-01-19%2007%3A30%3A00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transactions",
+						"report",
+						"1"
+					],
+					"query": [
+						{
+							"key": "endDate",
+							"value": "2022-01-19%2007%3A30%3A00"
+						},
+						{
+							"key": "startDate",
+							"value": "1984-01-19%2007%3A30%3A00"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

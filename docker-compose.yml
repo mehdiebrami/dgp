@@ -1,0 +1,35 @@
+version: '3'
+services:
+  db:
+    image: "mysql"
+    container_name: mysql
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_USER=root"
+      - "MYSQL_PASSWORD=root"
+      - "MYSQL_DATABASE=paymentService"
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+  payment:
+    container_name: payment-service
+    depends_on:
+      - mysql
+      - rabbitmq  
+    build: ./payment-service
+    ports:
+        - '8080:8080'
+  notification:
+    container_name: notification-service
+    build: ./notification-service
+    ports:
+        - '8081:8081'  
+    depends_on:
+      - rabbitmq

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: payment-service
+
+  rabbitmq:
+    template:
+      default-receive-queue: payment-queue
+      notification-queue: notification-queue
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/paymentService
+    username: root
+    password: root
+    name: paymentService
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: embedded
+
+server:
+  port: 8080
+
+service:
+  api-uri: /api
